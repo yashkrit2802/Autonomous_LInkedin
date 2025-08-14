@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '8000:8000'
+    environment:
+      - DATABASE_URL=postgresql://postgres:Yashkrit153323@@db:5432/influenceos
+      - GOOGLE_API_KEY=AIzaSyBjnL13wh92MFqCMGfoXFtvi6rqybs8znw
+      - LINKEDIN_CLIENT_ID=863hqs7ot41ckw
+      - LINKEDIN_CLIENT_SECRET=WPL_AP1.09I9Kj42UXb68z9k.EPRPnQ==
+      - IN_DOCKER=true
+    depends_on:
+      - db
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: influenceos
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h db -p 5432 -U postgres -d influenceos"]
+      interval: 2s
+      timeout: 2s
+      retries: 60
+
+  

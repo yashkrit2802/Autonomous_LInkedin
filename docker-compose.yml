@@ -5,10 +5,10 @@ services:
     ports:
       - '8000:8000'
     environment:
-      - DATABASE_URL=postgresql://postgres:Yashkrit153323@@db:5432/influenceos
-      - GOOGLE_API_KEY=AIzaSyBjnL13wh92MFqCMGfoXFtvi6rqybs8znw
-      - LINKEDIN_CLIENT_ID=863hqs7ot41ckw
-      - LINKEDIN_CLIENT_SECRET=WPL_AP1.09I9Kj42UXb68z9k.EPRPnQ==
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/influenceos
+      - GOOGLE_API_KEY=Enter your KEy
+      - LINKEDIN_CLIENT_ID=Enter your KEy
+      - LINKEDIN_CLIENT_SECRET=Enter your KEy
       - IN_DOCKER=true
     depends_on:
       - db
